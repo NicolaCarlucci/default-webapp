@@ -1,0 +1,5 @@
+package com.defaultwebapp.webapp.services;
+
+public class ServicesDaoQuery {
+
+}

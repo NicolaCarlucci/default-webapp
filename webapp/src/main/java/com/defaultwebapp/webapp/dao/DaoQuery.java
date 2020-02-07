@@ -1,0 +1,62 @@
+package com.defaultwebapp.webapp.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class DaoQuery {
+
+	private String urlDb;
+
+	private String user;
+
+	private String password;
+
+	private String drivers;
+
+	final static Logger logger = LogManager.getLogger(DaoQuery.class);
+
+	public DaoQuery(String urlDb, String user, String password, String drivers) {
+		this.urlDb = urlDb;
+		this.user = user;
+		this.password = password;
+		this.drivers = drivers;
+		loadDriver();
+	}
+
+	private boolean loadDriver() {
+		return ConfigDao.loadDrivers(drivers);
+	}
+
+	private Connection getConnection() {
+		logger.info(urlDb + " " + user + " " + password);
+		return ConfigDao.openConnection(urlDb, user, password);
+	}
+
+	public void DaoQuery1(String id_macchina) {
+		logger.info("DaoQuery: " + id_macchina);
+		Connection connection = getConnection();
+		if (connection != null) {
+			String query = "INSERT INTO.......";
+			Statement statement = ConfigDao.getStatement(connection);
+			if (statement != null) {
+				try {
+					logger.info("Esecuzione della query :" + query);
+					statement.executeUpdate(query);
+					logger.info("Log inserito");
+				} catch (SQLException sQLException) {
+					logger.error(sQLException);
+				} finally {
+					ConfigDao.closeResultSetAndConnection(statement, connection);
+				}
+			} else {
+				logger.error("statement null");
+			}
+		} else {
+			logger.error("statement null");
+		}
+	}
+}

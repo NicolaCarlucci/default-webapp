@@ -1,0 +1,32 @@
+package com.defaultwebapp.webapp.config;
+
+@Component("propsFrontendDMS")
+public class ExternalProperties {
+
+	private static Properties externalProperties = new Properties();
+
+	@PostConstruct
+	public void initProperties() {
+		File configDir = new File(System.getProperty("catalina.base"), "conf");
+		File configFile = new File(configDir, "config.properties");
+		externalProperties = new Properties();
+
+		try {
+			InputStream stream = new FileInputStream(configFile);
+			externalProperties.load(stream);
+		} catch (Exception e) {
+		}
+
+		initializeConstants();
+
+	}
+
+	public void initializeConstants() {
+
+		ConstantProperties.basePath = externalProperties.getProperty("base.path");
+
+		
+
+	}
+
+}

@@ -1,0 +1,17 @@
+base.path = terminali
+
+db.string.connection = com.microsoft.sqlserver.jdbc.SQLServerDriver
+db.url = jdbc:sqlserver://localhost:1433;database=loggerMargaritellidb
+db.user.db = sa
+db.password.db = password
+
+#jsp
+
+jsp.button.collegaMacchina = Collega Macchina
+jsp.button.scollegaMacchina = Scollega Macchina
+jsp.button.collegaOperatore = Collega Operatore
+jsp.button.scollegaOperatore = Scollega Operatore
+jsp.button.iniziaAttivita = Inizia Attività
+jsp.button.fineAttivita = Fine Attività
+jsp.button.prelievo = Prelievo
+jsp.button.versamento = Avanzamento/versamento

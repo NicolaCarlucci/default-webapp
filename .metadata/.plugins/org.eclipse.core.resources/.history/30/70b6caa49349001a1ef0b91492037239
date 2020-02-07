@@ -1,0 +1,8 @@
+package com.defaultwebapp.webapp.utilities;
+
+public class ConstantProperties {
+	
+	// ---------------------------------------------JSP--------------------------
+		public static String basePath = null;
+
+}

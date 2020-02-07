@@ -1,0 +1,24 @@
+
+
+/**
+ * Classe che implementa le utilities per il ritorno dell'errore di
+ * un'eccezione.
+ * 
+ * @author Nicola Carlucci organizzation Altanet S.r.l.
+ *
+ */
+public class ExceptionMessage {
+	/**
+	 * Restituisce l'errore dell'eccezione in una stringa
+	 * 
+	 * @param exception
+	 * @return
+	 */
+	public static String getMessageException(Exception exception) {
+		if (exception.getMessage() != null) {
+			return exception.getMessage();
+		} else {
+			return exception.getCause().toString();
+		}
+	}
+}

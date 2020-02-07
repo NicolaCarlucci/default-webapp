@@ -1,0 +1,5 @@
+package com.defaultwebapp.webapp.utilities;
+
+public class ConstantProperties {
+
+}

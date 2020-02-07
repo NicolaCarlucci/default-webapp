@@ -1,0 +1,5 @@
+package com.defaultwebapp.webapp.dao;
+
+public class DaoQuery {
+
+}

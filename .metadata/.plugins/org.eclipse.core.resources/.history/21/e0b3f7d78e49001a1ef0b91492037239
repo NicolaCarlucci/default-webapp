@@ -1,0 +1,5 @@
+package com.defaultwebapp.webapp.controller;
+
+public class indexController {
+
+}

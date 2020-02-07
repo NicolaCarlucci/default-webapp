@@ -1,0 +1,49 @@
+package com.defaultwebapp.webapp.config;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.stereotype.Component;
+
+import com.defaultwebapp.webapp.utilities.ConstantProperties;
+
+@Component("propsFrontendDMS")
+public class ExternalProperties {
+
+	private static Properties externalProperties = new Properties();
+
+	@PostConstruct
+	public void initProperties() {
+		File configDir = new File(System.getProperty("catalina.base"), "conf");
+		File configFile = new File(configDir, "config.properties");
+		externalProperties = new Properties();
+
+		try {
+			InputStream stream = new FileInputStream(configFile);
+			externalProperties.load(stream);
+		} catch (Exception e) {
+		}
+
+		initializeConstants();
+
+	}
+
+	public void initializeConstants() {
+
+		ConstantProperties.basePath = externalProperties.getProperty("base.path");
+
+		ConstantProperties.driverSqlServer = externalProperties.getProperty("db.string.connection");
+
+		ConstantProperties.urlSqlServer = externalProperties.getProperty("db.url");
+
+		ConstantProperties.userSqlServer = externalProperties.getProperty("db.user.db");
+
+		ConstantProperties.passwordSqlServer = externalProperties.getProperty("db.password.db");
+
+	}
+
+}
